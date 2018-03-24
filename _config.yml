@@ -1,7 +1,7 @@
 # Site settings
 title: dushenzhi的博客
 SEOTitle: dushenzhi的博客 | dushenzhi‘s Blog
-header-img: img/post-bg-desk.jpg
+header-img: img/post-bg-coffee.jpeg
 email: dushenzhi@gmail.com
 description: "Every failure is leading towards success."
 keyword: "BY, BY Blog, dushenzhi的博客, dushenzhi, 杜慎芝, iOS, Apple, iPhone"
@@ -12,7 +12,7 @@ github_repo: "https://github.com/dushenzhi/dushenzhi.github.io.git" # you code r
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "Goals determine what you going to be!"
-sidebar-avatar: /img/about-BY-gentle.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: /img/about-dushenzhi-gentle.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
