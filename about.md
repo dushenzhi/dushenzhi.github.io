@@ -6,7 +6,7 @@ permalink: /about/
 
 dushenzhi's blog!
 
-[GitHub Address][https://github.com/dushenzhi]
+[GitHub Address]: [https://github.com/dushenzhi](https://github.com/dushenzhi)
 
 
-[Blog Address]: https://dushenzhi.github.io
+[Blog Address]: [https://dushenzhi.github.io](https://dushenzhi.github.io)
