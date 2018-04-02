@@ -127,7 +127,7 @@ java -jar mybatis-generator-core-1.3.2.jar -configfile ./generatorConfig.xml -ov
 
 ## 使用建议
 
-实际项目中我们是使用生成的DAO层的interface `.java`文件已经对应的mybatis映射`xml`文件
+实际项目中我们是使用生成的DAO层的interface `java`文件已经对应的mybatis映射`xml`文件
 
 mybatis generator相关jar、代码和配置文件可以不用放到实际项目中去。
 
