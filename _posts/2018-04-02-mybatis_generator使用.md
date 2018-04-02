@@ -24,7 +24,8 @@ github托管地址：[https://github.com/mybatis/generator](https://github.com/m
 ```xml
 <dependency>    
 	<groupId>org.mybatis.generator</groupId>
-	<artifactId>mybatis-generator-core</artifactId>			<version>1.3.2</version>
+	<artifactId>mybatis-generator-core</artifactId>	
+	<version>1.3.2</version>
 	<type>jar</type>
 	<scope>test</scope>
 </dependency>
@@ -93,8 +94,9 @@ java -jar mybatis-generator-core-1.3.2.jar -configfile ./generatorConfig.xml -ov
 ```
 
 * maven插件的方式：
+
 ```xml
-	<plugin>
+<plugin>
     <groupId>org.mybatis.generator</groupId>
     <artifactId>mybatis-generator-maven-plugin</artifactId>
     <version>1.3.2</version>
