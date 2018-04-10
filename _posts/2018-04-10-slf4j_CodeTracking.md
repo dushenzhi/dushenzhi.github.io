@@ -214,7 +214,7 @@ static Set<URL> findPossibleStaticLoggerBinderPathSet() {
 
 实际项目中，存在多个日志实现框架时，只能选择其中一个具体实现，需要将其他实现的`slf4j`适配支持的包排除掉，并将其他的具体实现日志系统直接打印的日志桥接到`slf4j`上，这样系统就可以统一在一个日志框架下打印日志。
 
-如何其他的具体实现日志系统直接打印的日志桥接到slf4j上呢？我们可以参见下图：
+如何将其他具体日志框架直接打印的日志桥接到slf4j上呢？我们可以参见下图：
 
 ![/img/slf4j/redirectToSlf4j.png](/img/slf4j/redirectToSlf4j.png)
 
