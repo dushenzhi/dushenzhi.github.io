@@ -107,6 +107,7 @@ public class SeleniumExample {
     public static void main(String[] args) {
         ChromeOptions options = new ChromeOptions();
         //options.setHeadless(true);//默认展示浏览器,该参数设置为true将不展示浏览器
+        //options.addArguments("--auto-open-devtools-for-tabs");//打开浏览器时自动开启开发者工具
         WebDriver driver = new ChromeDriver(options);
         driver.get("http://www.google.com");      //请求google首页
         WebElement element = driver.findElement(By.name("q"));//获取搜索框页面元素
