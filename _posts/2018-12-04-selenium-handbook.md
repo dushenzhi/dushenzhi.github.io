@@ -131,7 +131,13 @@ public class SeleniumExample {
 
 ## 服务器环境搭建
 
-安装Chrome浏览器
+### 1、安装Chrome
+
+安装chrome折腾了好久，主要是生成服务器上的CentOS操作系统版本比较老，而能够下载并安装到的chrome只找到最新版本，其很多的底层依赖库比较新，老版本的操作系统很难解决这个问题。升级新版的系统后安装过程非常顺利，建议需要搭建环境的升级到比较新的操作系统避免折腾~~
+
+#### 快速安装
+
+一条命令安装Chrome浏览器，参见：
 
 ``` bash
 curl https://intoli.com/install-google-chrome.sh | bash
@@ -139,29 +145,115 @@ curl https://intoli.com/install-google-chrome.sh | bash
 
 
 
+#### 手动安装
+
+##### 系统环境：
+
+``` shell
+$ cat /etc/redhat-release
+CentOS Linux release 7.6.1810 (Core)
+```
+
+
+
+换国内源，加快安装包下载过程速度
+
+``` shell
+sudo mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
+curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+sudo yum clean all #
+sudo yum makecache
+sudo yum update
+```
+
+
+
+##### 安装chrome
+
+yum安装
+
+``` shell
+sudo yum install google-chrome-stable -y
+```
+
+下载安装
+
+``` shell
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+sudo yum localinstall google-chrome-stable_current_x86_64.rpm --nogpgcheck
+```
+
+
+
+##### 验证
+
+查看安装的chrome版本
+
+``` java
+$ google-chrome --version
+Google Chrome 71.0.3578.98
+```
+
+验证chrome是否安装成功
+
+``` shell
+$ sudo google-chrome-stable --headless --disable-gpu --screenshot --no-sandbox https://www.baidu.com
+[0104/184659.908911:ERROR:gpu_process_transport_factory.cc(967)] Lost UI shared context.
+[0104/184707.450438:INFO:headless_shell.cc(546)] Written to file screenshot.png.
+```
+
+`ERROR:gpu_process_transport_factory.cc`报出错误可以忽略，是由于服务器没有gpu导致，不影响正常使用。
+
+但执行程序时输出这么个错总归是心里不舒服，而且还输出了其他的info信息，如果不想看到这些日志信息的话，可以设置chromedriver的日志级别，只有大于设置级别的日志还会输出，该配置参数为：log-level
+
+``` 
+options.add_argument('log-level=3')
+# INFO = 0, 
+# WARNING = 1, 
+# LOG_ERROR = 2, 
+# LOG_FATAL = 3
+# default is 0
+```
+
+
+
+执行结束后会在服务器本地当前目录生成一张截图，可以下载下来看生成的图片效果
+
+``` shell
+$ ll
+total 55580
+-rw------- 1 root   root   120007 Jan  4 18:47 screenshot.png
+```
+
+### 2、安装ChromeDriver
+
+这部分只需要到对应的官方网站下载线程的二进制包，将其放在`PATH`能够找到的路径(如：`/usr/local/bin/`目录)下即可，Google官网可能需要梯子请自备。
+
+``` shell
+wget https://chromedriver.storage.googleapis.com/2.45/chromedriver_linux64.zip
+unzip chromedriver_linux64.zip
+sudo cp chromedriver /usr/local/bin/
+```
+
+
+
 参见：
 
-https://intoli.com/blog/installing-google-chrome-on-centos/
-
-
+[https://intoli.com/blog/installing-google-chrome-on-centos/](https://intoli.com/blog/installing-google-chrome-on-centos/)
 
 最新版ChromeDriver驱动下载，也可以参见上文用命令安装。
 
-https://sites.google.com/a/chromium.org/chromedriver/downloads
+[https://sites.google.com/a/chromium.org/chromedriver/downloads](https://sites.google.com/a/chromium.org/chromedriver/downloads)
 
-http://chromedriver.storage.googleapis.com/index.html
-
-
+[http://chromedriver.storage.googleapis.com/index.html](http://chromedriver.storage.googleapis.com/index.html)
 
 
 
+## 3、集群模式
 
 
 
-
-## 集群模式
-
-selenium集群模式需要用到`selenium-server.jar`包，服务功能实现由该jar包提供，当前最新版本下载地址为（有墙请自备梯子）：
+如果selenium需要用到集群模式提供服务，那么需要用到`selenium-server.jar`包，服务功能实现由该jar包提供，当前最新版本下载地址为（有墙请自备梯子）：
 
 ``` bash
 wget http://selenium-release.storage.googleapis.com/3.9/selenium-server-standalone-3.9.1.jar
@@ -214,8 +306,6 @@ DesiredCapabilities capability = DesiredCapabilities.chrome();
 WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capability);
 //driver do something...
 ```
-
-
 
 
 
