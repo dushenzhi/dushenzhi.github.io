@@ -247,6 +247,12 @@ sudo cp chromedriver /usr/local/bin/
 
 [http://chromedriver.storage.googleapis.com/index.html](http://chromedriver.storage.googleapis.com/index.html)
 
+chromedriver源代码：
+
+[https://chromium.googlesource.com/chromium/src/+/master/chrome/test/chromedriver/](https://chromium.googlesource.com/chromium/src/+/master/chrome/test/chromedriver/)
+
+
+
 
 
 ## 3、集群模式
@@ -306,6 +312,3 @@ DesiredCapabilities capability = DesiredCapabilities.chrome();
 WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capability);
 //driver do something...
 ```
-
-
-
