@@ -171,7 +171,18 @@ sudo yum update
 ##### 安装chrome
 
 yum安装
+配置源：
+```
+# vim /etc/yum.repos.d/google-chrome.repo
+[google-chrome]
+name=google-chrome
+baseurl=http://dl.google.com/linux/chrome/rpm/stable/$basearch
+enabled=1
+gpgcheck=1
+gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub
+```
 
+执行yum安装命令：
 ``` shell
 sudo yum install google-chrome-stable -y
 ```
@@ -196,6 +207,7 @@ Google Chrome 71.0.3578.98
 
 验证chrome是否安装成功
 
+
 ``` shell
 $ sudo google-chrome-stable --headless --disable-gpu --screenshot --no-sandbox https://www.baidu.com
 [0104/184659.908911:ERROR:gpu_process_transport_factory.cc(967)] Lost UI shared context.
@@ -215,14 +227,17 @@ options.add_argument('log-level=3')
 # default is 0
 ```
 
-
-
 执行结束后会在服务器本地当前目录生成一张截图，可以下载下来看生成的图片效果
 
 ``` shell
 $ ll
 total 55580
 -rw------- 1 root   root   120007 Jan  4 18:47 screenshot.png
+```
+
+无头版chrome浏览器生成pdf文件：
+```shell
+google-chrome --headless --disable-gpu --print-to-pdf='test.pdf' http://127.0.0.1:8080/pdf
 ```
 
 ### 2、安装ChromeDriver
