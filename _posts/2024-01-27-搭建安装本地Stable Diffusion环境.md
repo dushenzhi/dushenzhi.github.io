@@ -2,7 +2,7 @@
 layout:     post
 title:      搭建安装本地Stable Diffusion环境
 subtitle:   Stable Diffusion入门
-date:       2016-04-17
+date:       2024-01-27
 author:     dushenzhi
 header-img: img/post-sample-image.jpg
 catalog: true
